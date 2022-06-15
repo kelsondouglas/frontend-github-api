@@ -4,7 +4,8 @@ import api from "../services/api";
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(undefined);
+  const [repositories, setRepositories] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -12,8 +13,17 @@ export const UserProvider = ({ children }) => {
     try {
       setError("");
       setLoading(true);
-      const { data } = await api.get(`users/${username}`);
-      setUser(data);
+      setUser(undefined);
+      if (username.length === 0) {
+        setError("Campo não pode estar vazio.");
+        setUser(undefined);
+        return;
+      }
+      const user = await api.get(`users/${username}`);
+      const repos = await api.get(`users/${username}/repos`);
+      setRepositories(repos.data);
+      console.log(repos.data);
+      setUser(user.data);
     } catch (err) {
       setUser(undefined);
       setError("Usuário não encontrado.");
@@ -23,7 +33,9 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, loading, error, getUser }}>
+    <UserContext.Provider
+      value={{ user, loading, error, repositories, getUser }}
+    >
       {children}
     </UserContext.Provider>
   );

@@ -1,10 +1,17 @@
 import React from "react";
-import { useUser } from "../../hooks/useUser";
+import { Container } from "./styled";
 
-const Repository = () => {
-  const { user, loading, error } = useUser();
-
-  return <div>Repository</div>;
+const Repository = ({ repository }) => {
+  const { name, description, full_name, html_url } = repository;
+  return (
+    <Container>
+      <h4>{name}</h4>
+      <p>{description}</p>
+      <a href={html_url} target="_blank">
+        Acessar Repositório {full_name}
+      </a>
+    </Container>
+  );
 };
 
 export default Repository;
