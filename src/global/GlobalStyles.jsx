@@ -2,8 +2,6 @@
 import * as styled from "styled-components";
 
 export default styled.createGlobalStyle`
-  @import url("https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&display=swap");
-
   :root {
     --body-bg: #30313a;
     --container-bg: #171821;
