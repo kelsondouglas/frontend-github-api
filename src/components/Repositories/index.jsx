@@ -15,7 +15,7 @@ const Repositories = () => {
       <Container>
         <Profile />
         {repositories?.map((repository) => (
-          <Repository repository={repository} />
+          <Repository key={repository.id} repository={repository} />
         ))}
       </Container>
     );
