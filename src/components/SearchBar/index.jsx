@@ -7,8 +7,14 @@ const SearchBar = () => {
   const [searchValue, setSearchValue] = useState("");
   const { getUser } = useUser();
 
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    getUser(searchValue);
+  }
+
   return (
-    <Container>
+    <Container onSubmit={handleSubmit}>
       <input
         type="text"
         value={searchValue}
@@ -16,11 +22,7 @@ const SearchBar = () => {
         placeholder="Buscar por usuário..."
       />
 
-      <button
-        onClick={() => {
-          getUser(searchValue);
-        }}
-      >
+      <button>
         <BiSearch />
       </button>
     </Container>
