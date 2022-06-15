@@ -5,6 +5,10 @@ export const Container = styled.div`
   padding: 1rem;
   background-color: var(--components-bg);
 
+  @media screen and (min-width: 40rem) {
+    grid-area: 1/1/ 3/3;
+  }
+
   .user-avatar-data {
     display: flex;
     flex-direction: column;
@@ -53,17 +57,5 @@ export const Container = styled.div`
         }
       }
     }
-  }
-
-  .user-text-data {
-    margin-top: 1rem;
-
-    .box {
-      display: flex;
-    }
-  }
-
-  @media screen and (min-width: 40rem) {
-    grid-area: 1/1/ 3/3;
   }
 `;

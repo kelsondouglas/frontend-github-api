@@ -13,6 +13,8 @@ const Profile = () => {
             <div className="avatar">
               <img src={user.avatar_url} alt="user avatar" />
             </div>
+            <p> {user.name ? user.name : `Usuário não possui Nome`}</p>
+            <br />
             <div className="avatar-user-info">
               <div className="box">
                 <p> {user.followers}</p>
@@ -27,14 +29,6 @@ const Profile = () => {
                 <p>Repositorios </p>
               </div>
             </div>
-          </div>
-          <div className="user-text-data">
-            <p>Nome: {user.name ? user.name : `Usuário não possui Nome`}</p>
-            <p>Bio: {user.bio ? user.bio : `Usuário não possui Bio`} </p>
-            <p>
-              Localização:
-              {user.location ? user.location : `Usuário não possui Localização`}
-            </p>
           </div>
         </>
       )}
